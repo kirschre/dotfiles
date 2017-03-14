@@ -1,0 +1,123 @@
+set nocompatible
+filetype off
+
+"https://github.com/VundleVim/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-haml'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'posva/vim-vue'
+
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'jacoborus/tender'
+"Plugin 'altercation/solarized'
+Plugin 'nanotech/jellybeans.vim'
+"use default terminal background
+let g:jellybeans_overrides = {
+\    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+\}
+
+Plugin 'farmergreg/vim-lastplace'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'severin-lemaignan/vim-minimap'
+let g:ctrlp_custom_ignore = 'tmp\|gemini\|gemini_report\|docs\|bower_components\|node_modules\|\.git'
+let g:ctrlp_clear_cache_on_exit = 0
+
+"causes conceallevel to always be set to 2, annoying for json files in
+"particular.
+"Plugin 'Yggdroot/indentLine'
+"let g:indentLine_char = '│'
+
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_theme='bubblegum'
+set laststatus=2
+
+Plugin 'vim-airline/vim-airline-themes'
+
+call vundle#end()
+
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+filetype plugin indent on
+syntax on
+
+"allow 256 color mode
+set t_Co=256
+set t_Sb=[4%dm
+set t_Sf=[3%dm
+set background=dark
+colorscheme jellybeans
+
+set nocompatible
+
+"tab options
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set smartindent
+set autoindent
+
+"usability
+set bs=indent,eol,start
+set ruler
+set nu
+set scrolloff=10
+set cursorline
+set noshowmode
+set autoread
+
+"split options
+set splitbelow
+set splitright
+
+"search options
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set nowrapscan
+
+"backup/swp file options
+set backup
+set backupdir=~/.vim/tmp/
+set dir=~/.vim/tmp//
+set history=200
+
+"don't hide e.g. quotes around JSON strings
+set conceallevel=0
+
+"autocomplete menu should act like bash
+set wildmenu
+set wildmode=longest,list
+
+"add </> brackets to pair matching
+set matchpairs+=<:>
+
+"hit <enter> to clear search highlight
+nnoremap <CR> :noh<CR><CR>
+
+"select pasted text
+nnoremap gp `[v`]
+
+"show tab characters
+set listchars=tab:\|\ "trailing space intentional
+set list
+
+"spellcheck
+au FileType gitcommit set spell
