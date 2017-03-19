@@ -39,6 +39,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'vim-airline/vim-airline'
+"https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
